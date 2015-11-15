@@ -8,50 +8,71 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid Height="260" Width="300">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
+    <Grid x:Name="LayoutRoot">
+
+        <Grid.ChildrenTransitions>
+            <TransitionCollection>
+                <EntranceThemeTransition/>
+            </TransitionCollection>
+        </Grid.ChildrenTransitions>
+
         <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <Button HorizontalAlignment="Center" VerticalAlignment="Center" MinWidth="50" MinHeight="60" MaxWidth="60" MaxHeight="60" Grid.Column="0" Grid.Row="0" />
-        <Button HorizontalAlignment="Center" VerticalAlignment="Center" MinWidth="50" MinHeight="60" MaxWidth="60" MaxHeight="60" Grid.Column="1" Grid.Row="0" />
-        <Button HorizontalAlignment="Center" VerticalAlignment="Center" MinWidth="50" MinHeight="60" MaxWidth="60" MaxHeight="60" Grid.Column="2" Grid.Row="0" />
-        <Button HorizontalAlignment="Center" VerticalAlignment="Center" MinWidth="50" MinHeight="60" MaxWidth="60" MaxHeight="60" Grid.Column="3" Grid.Row="0" />
-        <Button HorizontalAlignment="Center" VerticalAlignment="Center" MinWidth="50" MinHeight="60" MaxWidth="60" MaxHeight="60" Grid.Column="4" Grid.Row="0" />
+        <!-- Title Panel -->
+        <StackPanel Grid.Row="0" Margin="19,0,0,0">
+            <TextBlock Text="MY APPLICATION" Style="{ThemeResource TitleTextBlockStyle}" Margin="0,12,0,0"/>
+            <TextBlock Text="page title" Margin="0,-6.5,0,26.5" Style="{ThemeResource HeaderTextBlockStyle}" CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}"/>
+        </StackPanel>
 
-        <Button HorizontalAlignment="Center" VerticalAlignment="Center" MinWidth="50" MinHeight="60" MaxWidth="60" MaxHeight="60" Grid.Column="0" Grid.Row="1" />
-        <Button HorizontalAlignment="Center" VerticalAlignment="Center" MinWidth="50" MinHeight="60" MaxWidth="60" MaxHeight="60" Grid.Column="1" Grid.Row="1" />
-        <Button HorizontalAlignment="Center" VerticalAlignment="Center" MinWidth="50" MinHeight="60" MaxWidth="60" MaxHeight="60" Grid.Column="2" Grid.Row="1" />
-        <Button HorizontalAlignment="Center" VerticalAlignment="Center" MinWidth="50" MinHeight="60" MaxWidth="60" MaxHeight="60" Grid.Column="3" Grid.Row="1" />
-        <Button HorizontalAlignment="Center" VerticalAlignment="Center" MinWidth="50" MinHeight="60" MaxWidth="60" MaxHeight="60" Grid.Column="4" Grid.Row="1" />
+        <!--TODO: Content should be placed within the following grid-->
+        <Grid Grid.Row="1" x:Name="ContentRoot" Margin="19,9.5,19,0" Height="260" Width="300">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
 
-        <Button HorizontalAlignment="Center" VerticalAlignment="Center" MinWidth="50" MinHeight="60" MaxWidth="60" MaxHeight="60" Grid.Column="0" Grid.Row="2" />
-        <Button HorizontalAlignment="Center" VerticalAlignment="Center" MinWidth="50" MinHeight="60" MaxWidth="60" MaxHeight="60" Grid.Column="1" Grid.Row="2" />
-        <Button HorizontalAlignment="Center" VerticalAlignment="Center" MinWidth="50" MinHeight="60" MaxWidth="60" MaxHeight="60" Grid.Column="2" Grid.Row="2" />
-        <Button HorizontalAlignment="Center" VerticalAlignment="Center" MinWidth="50" MinHeight="60" MaxWidth="60" MaxHeight="60" Grid.Column="3" Grid.Row="2" />
-        <Button HorizontalAlignment="Center" VerticalAlignment="Center" MinWidth="50" MinHeight="60" MaxWidth="60" MaxHeight="60" Grid.Column="4" Grid.Row="2" />
+            <Button HorizontalAlignment="Center" VerticalAlignment="Center" MinWidth="50" MinHeight="60" MaxWidth="60" MaxHeight="60" Grid.Column="0" Grid.Row="0" />
+            <Button HorizontalAlignment="Center" VerticalAlignment="Center" MinWidth="50" MinHeight="60" MaxWidth="60" MaxHeight="60" Grid.Column="1" Grid.Row="0" />
+            <Button HorizontalAlignment="Center" VerticalAlignment="Center" MinWidth="50" MinHeight="60" MaxWidth="60" MaxHeight="60" Grid.Column="2" Grid.Row="0" />
+            <Button HorizontalAlignment="Center" VerticalAlignment="Center" MinWidth="50" MinHeight="60" MaxWidth="60" MaxHeight="60" Grid.Column="3" Grid.Row="0" />
+            <Button HorizontalAlignment="Center" VerticalAlignment="Center" MinWidth="50" MinHeight="60" MaxWidth="60" MaxHeight="60" Grid.Column="4" Grid.Row="0" />
 
-        <Button HorizontalAlignment="Center" VerticalAlignment="Center" MinWidth="50" MinHeight="60" MaxWidth="60" MaxHeight="60" Grid.Column="0" Grid.Row="3" />
-        <Button HorizontalAlignment="Center" VerticalAlignment="Center" MinWidth="50" MinHeight="60" MaxWidth="60" MaxHeight="60" Grid.Column="1" Grid.Row="3" />
-        <Button HorizontalAlignment="Center" VerticalAlignment="Center" MinWidth="50" MinHeight="60" MaxWidth="60" MaxHeight="60" Grid.Column="2" Grid.Row="3" />
-        <Button HorizontalAlignment="Center" VerticalAlignment="Center" MinWidth="50" MinHeight="60" MaxWidth="60" MaxHeight="60" Grid.Column="3" Grid.Row="3" />
-        <Button HorizontalAlignment="Center" VerticalAlignment="Center" MinWidth="50" MinHeight="60" MaxWidth="60" MaxHeight="60" Grid.Column="4" Grid.Row="3" />
+            <Button HorizontalAlignment="Center" VerticalAlignment="Center" MinWidth="50" MinHeight="60" MaxWidth="60" MaxHeight="60" Grid.Column="0" Grid.Row="1" />
+            <Button HorizontalAlignment="Center" VerticalAlignment="Center" MinWidth="50" MinHeight="60" MaxWidth="60" MaxHeight="60" Grid.Column="1" Grid.Row="1" />
+            <Button HorizontalAlignment="Center" VerticalAlignment="Center" MinWidth="50" MinHeight="60" MaxWidth="60" MaxHeight="60" Grid.Column="2" Grid.Row="1" />
+            <Button HorizontalAlignment="Center" VerticalAlignment="Center" MinWidth="50" MinHeight="60" MaxWidth="60" MaxHeight="60" Grid.Column="3" Grid.Row="1" />
+            <Button HorizontalAlignment="Center" VerticalAlignment="Center" MinWidth="50" MinHeight="60" MaxWidth="60" MaxHeight="60" Grid.Column="4" Grid.Row="1" />
 
-        <Button HorizontalAlignment="Center" VerticalAlignment="Center" MinWidth="50" MinHeight="60" MaxWidth="60" MaxHeight="60" Grid.Column="0" Grid.Row="4" />
-        <Button HorizontalAlignment="Center" VerticalAlignment="Center" MinWidth="50" MinHeight="60" MaxWidth="60" MaxHeight="60" Grid.Column="1" Grid.Row="4" />
-        <Button HorizontalAlignment="Center" VerticalAlignment="Center" MinWidth="50" MinHeight="60" MaxWidth="60" MaxHeight="60" Grid.Column="2" Grid.Row="4" />
-        <Button HorizontalAlignment="Center" VerticalAlignment="Center" MinWidth="50" MinHeight="60" MaxWidth="60" MaxHeight="60" Grid.Column="3" Grid.Row="4" />
-        <Button HorizontalAlignment="Center" VerticalAlignment="Center" MinWidth="50" MinHeight="60" MaxWidth="60" MaxHeight="60" Grid.Column="4" Grid.Row="4" />
+            <Button HorizontalAlignment="Center" VerticalAlignment="Center" MinWidth="50" MinHeight="60" MaxWidth="60" MaxHeight="60" Grid.Column="0" Grid.Row="2" />
+            <Button HorizontalAlignment="Center" VerticalAlignment="Center" MinWidth="50" MinHeight="60" MaxWidth="60" MaxHeight="60" Grid.Column="1" Grid.Row="2" />
+            <Button HorizontalAlignment="Center" VerticalAlignment="Center" MinWidth="50" MinHeight="60" MaxWidth="60" MaxHeight="60" Grid.Column="2" Grid.Row="2" />
+            <Button HorizontalAlignment="Center" VerticalAlignment="Center" MinWidth="50" MinHeight="60" MaxWidth="60" MaxHeight="60" Grid.Column="3" Grid.Row="2" />
+            <Button HorizontalAlignment="Center" VerticalAlignment="Center" MinWidth="50" MinHeight="60" MaxWidth="60" MaxHeight="60" Grid.Column="4" Grid.Row="2" />
+
+            <Button HorizontalAlignment="Center" VerticalAlignment="Center" MinWidth="50" MinHeight="60" MaxWidth="60" MaxHeight="60" Grid.Column="0" Grid.Row="3" />
+            <Button HorizontalAlignment="Center" VerticalAlignment="Center" MinWidth="50" MinHeight="60" MaxWidth="60" MaxHeight="60" Grid.Column="1" Grid.Row="3" />
+            <Button HorizontalAlignment="Center" VerticalAlignment="Center" MinWidth="50" MinHeight="60" MaxWidth="60" MaxHeight="60" Grid.Column="2" Grid.Row="3" />
+            <Button HorizontalAlignment="Center" VerticalAlignment="Center" MinWidth="50" MinHeight="60" MaxWidth="60" MaxHeight="60" Grid.Column="3" Grid.Row="3" />
+            <Button HorizontalAlignment="Center" VerticalAlignment="Center" MinWidth="50" MinHeight="60" MaxWidth="60" MaxHeight="60" Grid.Column="4" Grid.Row="3" />
+
+            <Button HorizontalAlignment="Center" VerticalAlignment="Center" MinWidth="50" MinHeight="60" MaxWidth="60" MaxHeight="60" Grid.Column="0" Grid.Row="4" />
+            <Button HorizontalAlignment="Center" VerticalAlignment="Center" MinWidth="50" MinHeight="60" MaxWidth="60" MaxHeight="60" Grid.Column="1" Grid.Row="4" />
+            <Button HorizontalAlignment="Center" VerticalAlignment="Center" MinWidth="50" MinHeight="60" MaxWidth="60" MaxHeight="60" Grid.Column="2" Grid.Row="4" />
+            <Button HorizontalAlignment="Center" VerticalAlignment="Center" MinWidth="50" MinHeight="60" MaxWidth="60" MaxHeight="60" Grid.Column="3" Grid.Row="4" />
+            <Button HorizontalAlignment="Center" VerticalAlignment="Center" MinWidth="50" MinHeight="60" MaxWidth="60" MaxHeight="60" Grid.Column="4" Grid.Row="4" />
+        </Grid>
     </Grid>
 </Page>
