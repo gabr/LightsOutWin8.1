@@ -47,12 +47,13 @@ namespace LightsOutWin8._1
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            Clear_Click(null, null);
+            Reset_Click(null, null);
         }
 
-        private void Clear_Click(object sender, RoutedEventArgs e)
+        private void Reset_Click(object sender, RoutedEventArgs e)
         {
             _boardControler.Clear();
+            _boardControler.RandomBoard();
             ResetMovesCounter();
         }
 

@@ -24,6 +24,10 @@ namespace LightsOutWin8._1
 
         public void Move(int column, int row)
         {
+            if (column < 0 || column > _board.ColumnDefinitions.Count - 1 ||
+                row < 0 || row > _board.RowDefinitions.Count - 1)
+                return;
+
             SwitchState(column, row);
             SwitchState(column - 1, row);
             SwitchState(column + 1, row);
@@ -36,6 +40,19 @@ namespace LightsOutWin8._1
             for (int c = 0; c < _board.ColumnDefinitions.Count; c++)
                 for (int r = 0; r < _board.ColumnDefinitions.Count; r++)
                     SetState(GetButton(c, r), false);
+        }
+
+        public void RandomBoard()
+        {
+            Random rand = new Random(DateTime.Now.Millisecond);
+
+            int c = _board.ColumnDefinitions.Count;
+            int r = _board.RowDefinitions.Count;
+            int maximumMoves = c * r;
+
+            int moves = rand.Next(0, maximumMoves);
+            for (int i = 0; i < moves; i++)
+                Move(rand.Next(0, c), rand.Next(0, r));
         }
 
         private void SwitchState(int column, int row)

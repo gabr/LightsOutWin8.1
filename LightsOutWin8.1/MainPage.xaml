@@ -10,7 +10,7 @@
 
     <Page.BottomAppBar>
         <CommandBar ClosedDisplayMode="Minimal">
-            <AppBarButton Icon="Clear" Label="Clear" Click="Clear_Click"/>
+            <AppBarButton Icon="Clear" Label="Reset" Click="Reset_Click"/>
         </CommandBar>
     </Page.BottomAppBar>
 
