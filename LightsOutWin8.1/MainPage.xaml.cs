@@ -44,5 +44,10 @@ namespace LightsOutWin8._1
             // If you are using the NavigationHelper provided by some templates,
             // this event is handled for you.
         }
+
+        private void Clear_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
