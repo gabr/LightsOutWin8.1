@@ -22,6 +22,7 @@ namespace LightsOutWin8._1
     /// </summary>
     public sealed partial class MainPage : Page
     {
+        private int _movesCounter;
         private BoardControler _boardControler;
 
         public MainPage()
@@ -32,11 +33,18 @@ namespace LightsOutWin8._1
             _boardControler = new BoardControler(Board);
         }
 
-        /// <summary>
-        /// Invoked when this page is about to be displayed in a Frame.
-        /// </summary>
-        /// <param name="e">Event data that describes how this page was reached.
-        /// This parameter is typically used to configure the page.</param>
+        private void IncrementMovesCounter()
+        {
+            ++_movesCounter;
+            Moves.Text = "Moves: " + _movesCounter;
+        }
+
+        private void ResetMovesCounter()
+        {
+            _movesCounter = 0;
+            Moves.Text = "Moves: " + _movesCounter;
+        }
+
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             Clear_Click(null, null);
@@ -45,12 +53,15 @@ namespace LightsOutWin8._1
         private void Clear_Click(object sender, RoutedEventArgs e)
         {
             _boardControler.Clear();
+            ResetMovesCounter();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             Button button = (Button)sender;
             _boardControler.Move(Grid.GetColumn(button), Grid.GetRow(button));
+
+            IncrementMovesCounter();
         }
     }
 }

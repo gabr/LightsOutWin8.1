@@ -18,8 +18,8 @@ namespace LightsOutWin8._1
                 throw new ArgumentException("Given board object is null");
 
             _board = board;
-            _brushEnabled = new SolidColorBrush(Colors.Red);
-            _brushDisabled = new SolidColorBrush(Colors.Blue);
+            _brushEnabled = new SolidColorBrush(Color.FromArgb(0xFF, 0x3E, 0x65, 0xFF));
+            _brushDisabled = (SolidColorBrush) (new Button()).Background;
         }
 
         public void Move(int column, int row)
