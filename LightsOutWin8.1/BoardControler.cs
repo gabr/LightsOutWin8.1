@@ -1,0 +1,68 @@
+﻿using System;
+using System.Linq;
+using Windows.UI;
+using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Media;
+
+namespace LightsOutWin8._1
+{
+    class BoardControler
+    {
+        private Grid _board;
+        private SolidColorBrush _brushEnabled;
+        private SolidColorBrush _brushDisabled;
+
+        public BoardControler(Grid board)
+        {
+            if (board == null)
+                throw new ArgumentException("Given board object is null");
+
+            _board = board;
+            _brushEnabled = new SolidColorBrush(Colors.Red);
+            _brushDisabled = new SolidColorBrush(Colors.Blue);
+        }
+
+        public void Move(int column, int row)
+        {
+            SwitchState(column, row);
+            SwitchState(column - 1, row);
+            SwitchState(column + 1, row);
+            SwitchState(column, row - 1);
+            SwitchState(column, row + 1);
+        }
+
+        public void Clear()
+        {
+            for (int c = 0; c < _board.ColumnDefinitions.Count; c++)
+                for (int r = 0; r < _board.ColumnDefinitions.Count; r++)
+                    SetState(GetButton(c, r), false);
+        }
+
+        private void SwitchState(int column, int row)
+        {
+            if (column < 0 || column > _board.ColumnDefinitions.Count - 1 ||
+                row < 0 || row > _board.RowDefinitions.Count - 1)
+                return;
+
+            Button button = GetButton(column, row);
+            SetState(button, !GetState(button));
+        }
+
+        private Button GetButton(int column, int row)
+        {
+            return _board.Children
+                .Cast<Button>()
+                .First(e => Grid.GetRow(e) == row && Grid.GetColumn(e) == column);
+        }
+
+        private bool GetState(Button button)
+        {
+            return button.Background == _brushEnabled ? true : false;
+        }
+
+        private void SetState(Button button, bool state)
+        {
+            button.Background = state ? _brushEnabled : _brushDisabled;
+        }
+    }
+}

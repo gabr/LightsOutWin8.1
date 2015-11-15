@@ -22,11 +22,14 @@ namespace LightsOutWin8._1
     /// </summary>
     public sealed partial class MainPage : Page
     {
+        private BoardControler _boardControler;
+
         public MainPage()
         {
             this.InitializeComponent();
-
             this.NavigationCacheMode = NavigationCacheMode.Required;
+
+            _boardControler = new BoardControler(Board);
         }
 
         /// <summary>
@@ -36,18 +39,18 @@ namespace LightsOutWin8._1
         /// This parameter is typically used to configure the page.</param>
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            // TODO: Prepare page for display here.
-
-            // TODO: If your application contains multiple pages, ensure that you are
-            // handling the hardware Back button by registering for the
-            // Windows.Phone.UI.Input.HardwareButtons.BackPressed event.
-            // If you are using the NavigationHelper provided by some templates,
-            // this event is handled for you.
+            Clear_Click(null, null);
         }
 
         private void Clear_Click(object sender, RoutedEventArgs e)
         {
+            _boardControler.Clear();
+        }
 
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Button button = (Button)sender;
+            _boardControler.Move(Grid.GetColumn(button), Grid.GetRow(button));
         }
     }
 }
