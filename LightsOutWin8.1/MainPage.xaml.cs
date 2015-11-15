@@ -31,6 +31,12 @@ namespace LightsOutWin8._1
             this.NavigationCacheMode = NavigationCacheMode.Required;
 
             _boardControler = new BoardControler(Board);
+            _boardControler.OnFinish += _boardControler_OnFinish;
+        }
+
+        private void _boardControler_OnFinish()
+        {
+            Moves.Text = "Finished in: " + _movesCounter;
         }
 
         private void IncrementMovesCounter()
@@ -59,10 +65,9 @@ namespace LightsOutWin8._1
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            IncrementMovesCounter();
             Button button = (Button)sender;
             _boardControler.Move(Grid.GetColumn(button), Grid.GetRow(button));
-
-            IncrementMovesCounter();
         }
     }
 }

@@ -12,6 +12,8 @@ namespace LightsOutWin8._1
         private SolidColorBrush _brushEnabled;
         private SolidColorBrush _brushDisabled;
 
+        public event Action OnFinish;
+
         public BoardControler(Grid board)
         {
             if (board == null)
@@ -33,10 +35,14 @@ namespace LightsOutWin8._1
             SwitchState(column + 1, row);
             SwitchState(column, row - 1);
             SwitchState(column, row + 1);
+
+            CheckIfFinished();
         }
 
         public void Clear()
         {
+            EnableBloard(true);
+
             for (int c = 0; c < _board.ColumnDefinitions.Count; c++)
                 for (int r = 0; r < _board.ColumnDefinitions.Count; r++)
                     SetState(GetButton(c, r), false);
@@ -53,6 +59,21 @@ namespace LightsOutWin8._1
             int moves = rand.Next(0, maximumMoves);
             for (int i = 0; i < moves; i++)
                 Move(rand.Next(0, c), rand.Next(0, r));
+        }
+
+        public void CheckIfFinished()
+        {
+            bool state = GetState(GetButton(0, 0));
+
+            for (int c = 0; c < _board.ColumnDefinitions.Count; c++)
+                for (int r = 0; r < _board.ColumnDefinitions.Count; r++)
+                    if (state != GetState(GetButton(c, r)))
+                        return;
+
+            if (OnFinish != null)
+                OnFinish();
+
+            EnableBloard(false);
         }
 
         private void SwitchState(int column, int row)
@@ -80,6 +101,13 @@ namespace LightsOutWin8._1
         private void SetState(Button button, bool state)
         {
             button.Background = state ? _brushEnabled : _brushDisabled;
+        }
+
+        private void EnableBloard(bool enable)
+        {
+            for (int c = 0; c < _board.ColumnDefinitions.Count; c++)
+                for (int r = 0; r < _board.ColumnDefinitions.Count; r++)
+                    GetButton(c, r).IsEnabled = enable;
         }
     }
 }
